@@ -8,7 +8,7 @@ use std::fs::{self, File, OpenOptions};
 use std::io::{Read, Write};
 use std::path::PathBuf;
 
-pub const VIEW_WIDTH: usize = 25;
+pub const VIEW_WIDTH: usize = 36;
 pub const VIEW_HEIGHT: usize = 8;
 
 #[derive(Serialize, Deserialize)]

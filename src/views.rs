@@ -126,7 +126,7 @@ where
                     day_style = day_style.combine(cs);
                     fs = fs.combine(cs);
                 }
-                let coords: Vec2 = ((i % 7) * 3, i / 7 + 2).into();
+                let coords: Vec2 = ((i % 7) * 5, i / 7 + 2).into();
                 if let Some(c) = self.get_by_date(d) {
                     printer.with_style(day_style, |p| {
                         p.print(coords, &format!("{:^3}", c));
