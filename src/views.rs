@@ -109,6 +109,21 @@ where
         };
 
         let draw_day = |printer: &Printer| {
+            let offset = match NaiveDate::from_ymd_opt(year, month, 1) {
+              Some(d) => {
+                match d.weekday() {
+                    Weekday::Mon => 0,
+                    Weekday::Tue => 1,
+                    Weekday::Wed => 2,
+                    Weekday::Thu => 3,
+                    Weekday::Fri => 4,
+                    Weekday::Sat => 5,
+                    Weekday::Sun => 6,
+                }
+            }
+            None => 0
+          };
+
             let mut i = 0;
             while let Some(d) = NaiveDate::from_ymd_opt(year, month, i + 1) {
                 let mut day_style = Style::none();
@@ -126,7 +141,9 @@ where
                     day_style = day_style.combine(cs);
                     fs = fs.combine(cs);
                 }
-                let coords: Vec2 = ((i % 7) * 5, i / 7 + 2).into();
+                // let coords: Vec2 = ((i % 7) * 5, i / 7 + 2).into();
+                let pos = i + offset;
+                let coords: Vec2 = ((pos % 7) * 5, pos / 7 + 2).into();
                 if let Some(c) = self.get_by_date(d) {
                     printer.with_style(day_style, |p| {
                         p.print(coords, &format!("{:^3}", c));

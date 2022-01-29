@@ -9,7 +9,7 @@ use std::io::{Read, Write};
 use std::path::PathBuf;
 
 pub const VIEW_WIDTH: usize = 36;
-pub const VIEW_HEIGHT: usize = 8;
+pub const VIEW_HEIGHT: usize = 9;
 
 #[derive(Serialize, Deserialize)]
 pub struct Look {
